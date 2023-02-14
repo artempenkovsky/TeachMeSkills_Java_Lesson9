@@ -1,3 +1,5 @@
+package by.teachmeskills.penkovsky.homework9;
+
 import by.teachmeskills.penkovsky.homework9.util.ScannerArray;
 import by.teachmeskills.penkovsky.homework9.util.StringUtils;
 
@@ -10,10 +12,9 @@ public class HomeWork9 {
         System.out.println("Задача 2");
         System.out.println("Задача 3");
         System.out.println("Задача 4");
-
+        System.out.println("Задача 5");
 
         int task = scanner.nextInt();
-        if (task >= 1 && task <= 6) {
             switch (task) {
                 case 2 -> {
                     System.out.println("Введите строковые данные: ");
@@ -29,23 +30,29 @@ public class HomeWork9 {
                 case 4 -> {
                     System.out.println("Введите первый массив: ");
                     char[] array1 = ScannerArray.getNewArray();
-                    System.out.print("Ваши введенные данные: ");
-                    StringUtils.println(array1);
+                    System.out.println("Ваши введенные данные: \n");
+                    StringUtils.print(array1);
 
-                    System.out.println("Введите второй массив: ");
+                    System.out.println("\nВведите второй массив: ");
                     char[] array2 = ScannerArray.getNewArray();
-                    System.out.print("Ваши введенные данные: ");
-                    StringUtils.println(array2);
+                    System.out.println("Ваши введенные данные: ");
+                    StringUtils.print(array2);
 
                     boolean compare = StringUtils.contains(array1, array2);
-                    if (compare = true) {
-                        System.out.println("Второй массив является подмассивом первого.");
-                    } else System.out.println("Второй массив не является подмассивом первого.");
+                    if (compare) {
+                        System.out.println("\nВторой массив является подмассивом первого.");
+                    } else System.out.println("\nВторой массив не является подмассивом первого.");
+
+                }
+                case 5 -> {
+                    System.out.println("Введите данные: ");
+                    char[] array = ScannerArray.getNewArray();
+                    System.out.println(StringUtils.parseInt(array));
 
                 }
                 default -> System.out.println("Введены некорректные данные");
             }
         }
     }
-}
+
 

@@ -9,30 +9,27 @@ public class StringUtils {
 
     public static void println(char[] array) {
         for (int i = 0; i < array.length; i++)
-            System.out.print(array[i]);
-        System.out.print("\n");
-
+            System.out.println(array[i]);
+        System.out.println();
     }
 
     public static boolean isBlank(char[] array) {
-        if (array.length == 0)
-            return true;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != ' ')
+            if (!Character.isWhitespace(array[i])){
                 return false;
+            }
         }
         return true;
     }
 
     public static boolean isRussian(char[] array) {
+        //bolean isRussian = true;
         if (array.length == 0) {
             throw new IllegalArgumentException("Вы ничего не ввели");
         }
         for (int i = 0; i < array.length; i++) {
-            if ((array[i] >= 'а' && array[i] <= 'я') || (array[i] >= 'А' && array[i] <= 'Я') || (array[i] == 'ё')) { //&& array[i] == 'Ё')) {
+            if ((array[i] >= 'А' && array[i] <= 'я') || array[i] == 'ё' || array[i] == 'Ë') {
                 return true;
-            } else {
-                return false;
             }
         }
         return false;
@@ -40,22 +37,31 @@ public class StringUtils {
 
     public static boolean contains(char[] array, char[] secondArray) {
         if (secondArray.length > array.length) {
-            throw new IllegalArgumentException("Введены неверные данные!");
+            return false;
         }
-
-        for (int i = 0; i < array.length - 1; i++) {
-            int compare = 0;
+        for (int i = 0; i <= array.length - secondArray.length; i++) {
+            boolean equal = true;
             for (int j = 0; j < secondArray.length; j++) {
-                if (array[i + j] != secondArray[j])
+                if (array[i+j] != secondArray[j]) {
+                    equal = false;
                     break;
-                else {
-                    compare++;
                 }
-                if (compare == secondArray.length)
-                    return true;
             }
+            if (equal) return true;
         }
         return false;
+        }
+
+    public static int parseInt (char[] array){
+        int result = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (!Character.isDigit(array[i])) {
+                throw new IllegalArgumentException("Проверьте введенные данные!");
+            }
+            int digit = array[i] - '0';
+            result = result * 10 + digit;
+        }
+        return result;
+        }
     }
-}
 

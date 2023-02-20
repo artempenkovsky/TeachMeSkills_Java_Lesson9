@@ -8,14 +8,19 @@ import java.util.Scanner;
 public class HomeWork9 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Уважаемый пользователь, введите номер задачи согласно списку: ");
-        System.out.println("Задача 2");
-        System.out.println("Задача 3");
-        System.out.println("Задача 4");
-        System.out.println("Задача 5");
-
-        int task = scanner.nextInt();
-            switch (task) {
+        System.out.println(
+                """
+                        Choose task:
+                        2. isBlank
+                        3. isRussian
+                        4. Contains
+                        5. parseInt
+                        0. Exit"""
+        );
+        while (true) {
+            System.out.println("Task number: ");
+            int taskNumber = scanner.nextInt();
+            switch (taskNumber) {
                 case 2 -> {
                     System.out.println("Введите строковые данные: ");
                     char[] array = ScannerArray.getNewArray();
@@ -48,11 +53,14 @@ public class HomeWork9 {
                     System.out.println("Введите данные: ");
                     char[] array = ScannerArray.getNewArray();
                     System.out.println(StringUtils.parseInt(array));
-
+                }
+                case 0 -> {
+                    return;
                 }
                 default -> System.out.println("Введены некорректные данные");
             }
         }
     }
+}
 
 
